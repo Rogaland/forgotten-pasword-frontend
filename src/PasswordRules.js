@@ -26,7 +26,7 @@ function PasswordRules(props) {
         <div className={classes.root}>
             <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography className={classes.heading}>Passordregler</Typography>
+                    <Typography className={classes.heading}>Passord regler</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Typography className={classes.text}>
