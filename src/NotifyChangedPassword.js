@@ -13,33 +13,16 @@ const styles = theme => ({
 });
 
 class NotifyChangedPassword extends React.Component {
-    state = {
-        open: false,
-    };
-
-    handleClick = () => {
-        this.setState({ open: true });
-    };
-
-    handleCloseNotify = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        this.setState({ notify: false });
-    };
-
     render() {
         const { classes } = this.props;
         return (
             <div>
-                <Button onClick={this.handleClick}>Open simple snackbar</Button>
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
                         horizontal: 'left',
                     }}
-                    open={this.state.open}
+                    open={!this.props.open}
                     autoHideDuration={6000}
                     onClose={this.handleClose}
                     ContentProps={{
@@ -47,15 +30,12 @@ class NotifyChangedPassword extends React.Component {
                     }}
                     message={<span id="message-id">Note archived</span>}
                     action={[
-                        <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
-                            UNDO
-                        </Button>,
                         <IconButton
                             key="close"
                             aria-label="Close"
                             color="inherit"
                             className={classes.close}
-                            onClick={this.handleClose}
+                            onClick={this.props.close}
                         >
                             <CloseIcon />
                         </IconButton>,
@@ -68,6 +48,8 @@ class NotifyChangedPassword extends React.Component {
 
 NotifyChangedPassword.propTypes = {
     classes: PropTypes.object.isRequired,
+    open: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(NotifyChangedPassword);

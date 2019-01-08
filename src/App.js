@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
-import Password from "./Password";
+import PasswordChange from "./PasswordChange";
 
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <Password/>
+                <PasswordChange/>
             </div>
         );
     }
