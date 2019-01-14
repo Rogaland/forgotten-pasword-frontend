@@ -31,7 +31,7 @@ function PasswordRules(props) {
                     </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                    <Typography className={classes.text}>
+                    <Typography className={classes.text} component="div">
                         <ul>
                             <li>Passordet må være&nbsp;
                                 8-16 tegn

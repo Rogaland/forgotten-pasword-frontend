@@ -122,9 +122,8 @@ class PasswordInput extends React.Component {
                     />
 
                     <Button
-                        raised
                         variant={"contained"}
-                        //disabled={!this.isFormValid()}
+                        disabled={!this.isFormValid()}
                         className={classes.button}
                         onClick={this.onClickSubmit}>
 

@@ -2,12 +2,15 @@ class ForgottenPasswordAPI {
 
     static setPassword(dn, password) {
         const url = '/api/password';
-        fetch(url, {
+        return fetch(url, {
             method: 'POST',
-            body: {
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
                 "dn": dn,
                 "password": password,
-            },
+            }),
         }).then(response => {
             return response.json();
         });
@@ -23,11 +26,26 @@ class ForgottenPasswordAPI {
             }
         });
 
-        fetch(request).then(response => {
+        return fetch(request).then(response => {
             return response.json();
+        });
+    }
+
+    static getDn() {
+        const url = `/api/userinfo/dn`;
+        return fetch(url, {
+            method: 'GET', headers: {
+                'x-dn': '',
+                'Accept': '*/*',
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            return response.text().then(text => {
+                return text;
+            });
         });
     }
 
 }
 
-export default ForgottenPasswordAPI
+export default ForgottenPasswordAPI;
