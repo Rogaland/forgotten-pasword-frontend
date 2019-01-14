@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import {TextField} from "@material-ui/core";
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-
 
 const styles = theme => ({
     container: {
@@ -50,8 +46,6 @@ class PasswordInput extends React.Component {
             repeatPasswordValid: true,
             newPassword: '',
             repeatPassword: '',
-            passwordUpdateNotify: false,
-            notify: false,
         };
     };
 

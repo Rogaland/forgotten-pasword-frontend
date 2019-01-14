@@ -27,22 +27,23 @@ const styles = theme => ({
 class PasswordChange extends React.Component {
 
     componentDidMount() {
-
-    };
+        //this.setState({user: ForgottenPasswordAPI.getUserinfo('')});
+    }
 
     state = {
-        user: {},
+        user: {firstName: 'Test', lastName: 'Testesen'},
         notify: false,
-
-    };
-
-    notify = () => {
-        return this.state.notify;
+        notifyVariant: 'error',
     };
 
     changePassword = (password) => {
         console.log('this should change password');
-        //ForgottenPasswordAPI.setPassword(this.state.user.dn, password);
+        /*
+        ForgottenPasswordAPI.setPassword(this.state.user.dn, password)
+            .then(() => this.notifySuccess())
+            .catch(() => this.notifyError());
+        */
+        this.notifySuccess();
     };
 
     handleCloseNotify = () => {
@@ -52,6 +53,14 @@ class PasswordChange extends React.Component {
         })
     };
 
+    notifySuccess = () => {
+        this.setState({notify: true, notifyVariant: 'success', notifyMessage: 'Passord byttet.'})
+    };
+
+    notifyError = () => {
+        this.setState({notify: true, notifyVariant: 'error', notifyMessage: 'Noe gikk galt.'})
+    };
+
     render() {
         const {classes} = this.props;
         return (
@@ -59,7 +68,7 @@ class PasswordChange extends React.Component {
                 <Paper elevation={1}>
                     <img src={logo} alt="Logo" className={classes.logo}/>
                     <Typography variant="h5" component="h3">
-                        Bytt passord
+                        Hei {this.state.user.firstName + " " + this.state.user.lastName}.
                     </Typography>
                     <Typography component="p">
                         <PasswordInput
@@ -67,8 +76,10 @@ class PasswordChange extends React.Component {
                         />
                         <PasswordRules/>
                         <NotifyChangedPassword
-                            open={this.notify}
+                            open={this.state.notify}
                             close={this.handleCloseNotify}
+                            variant={this.state.notifyVariant}
+                            message={this.state.notifyMessage}
                         />
                     </Typography>
                 </Paper>
@@ -77,7 +88,8 @@ class PasswordChange extends React.Component {
     }
 }
 
-PasswordChange.propTypes = {
+PasswordChange
+    .propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
