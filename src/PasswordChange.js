@@ -40,7 +40,7 @@ class PasswordChange extends React.Component {
     };
 
     changePassword = password => {
-        console.log(this.state);
+        console.log(this.state); //TODO: remove console logs after debugging is done
         ForgottenPasswordAPI.setPassword(this.state.user.dn, password)
             .then(() => this.notifySuccess())
             .catch(() => this.notifyError());
